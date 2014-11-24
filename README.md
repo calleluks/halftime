@@ -1,14 +1,14 @@
-# Halftime
+Halftime
+========
 
-TODO: Write a gem description
+A natural language time parser.
 
-## Installation
+Installation
+------------
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'halftime'
-```
+    gem "halftime"
 
 And then execute:
 
@@ -18,14 +18,12 @@ Or install it yourself as:
 
     $ gem install halftime
 
-## Usage
+Usage
+-----
 
-TODO: Write usage instructions here
+    require "halftime"
 
-## Contributing
+    Halftime::Parser.new("tomorrow at 12", now: Time.now).time
 
-1. Fork it ( https://github.com/[my-github-username]/halftime/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+If a time can not be parsed from the passed string, `Halftime::Parser#time` will
+return `nil`.

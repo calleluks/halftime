@@ -6,11 +6,10 @@ require 'halftime/version'
 Gem::Specification.new do |spec|
   spec.name          = "halftime"
   spec.version       = Halftime::VERSION
-  spec.authors       = ["Carl Olof Erlandsson"]
-  spec.email         = ["calle@thoughtbot.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.authors       = ["Calle Erlandsson"]
+  spec.email         = ["calle@calleerlandsson.com"]
+  spec.summary       = %q{Natural language time parser.}
+  spec.homepage      = "https://github.com/calleerlandsson/halftime"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
