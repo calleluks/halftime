@@ -1,6 +1,8 @@
 Halftime
 ========
 
+[![Build Status](https://travis-ci.org/calleerlandsson/halftime.svg)](https://travis-ci.org/calleerlandsson/halftime)
+
 A natural language time parser.
 
 Installation
