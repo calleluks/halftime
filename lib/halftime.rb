@@ -1,5 +1,2 @@
 require "halftime/version"
-
-module Halftime
-  # Your code goes here...
-end
+require "halftime/parser"
