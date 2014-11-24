@@ -97,6 +97,7 @@ describe Halftime::Parser do
         specify { expect(time("2june")).to eq Time.new(2015, 6, 2, 12, 0, 0, 0) }
         specify { expect(time("feb09")).to eq Time.new(2015, 2, 9, 12, 0, 0, 0) }
         specify { expect(time("tomorrow")).to eq Time.new(2014, 11, 15, 12, 0, 0, 0) }
+        specify { expect(time("Tomorrow")).to eq Time.new(2014, 11, 15, 12, 0, 0, 0) }
       end
 
       describe "year, month and day" do
@@ -155,6 +156,7 @@ describe Halftime::Parser do
         specify { expect(time("tomorrow @ 1pm")).to eq Time.new(2014, 11, 15, 13, 0, 0, 0) }
         specify { expect(time("tomorrow 20")).to eq Time.new(2014, 11, 15, 20, 0, 0, 0) }
         specify { expect(time("tomorrow at 01")).to eq Time.new(2014, 11, 15, 1, 0, 0, 0) }
+        specify { expect(time("Tomorrow 6pm")).to eq Time.new(2014, 11, 15, 18, 0, 0, 0) }
         specify { expect(time("4am tomorrow")).to eq Time.new(2014, 11, 15, 4, 0, 0, 0) }
         specify { expect(time("17 tomorrow")).to eq Time.new(2014, 11, 15, 17, 0, 0, 0) }
         specify { expect(time("@ 3 tomorrow")).to eq Time.new(2014, 11, 15, 3, 0, 0, 0) }
@@ -185,6 +187,7 @@ describe Halftime::Parser do
         specify { expect(time("tomorrow 14:23")).to eq Time.new(2014, 11, 15, 14, 23, 0, 0) }
         specify { expect(time("tomorrow at 0300")).to eq Time.new(2014, 11, 15, 3, 0, 0, 0) }
         specify { expect(time("tomorrow 345pm")).to eq Time.new(2014, 11, 15, 15, 45, 0, 0) }
+        specify { expect(time("Tomorrow 0730")).to eq Time.new(2014, 11, 15, 7, 30, 0, 0) }
         specify { expect(time("@ 0353 tomorrow")).to eq Time.new(2014, 11, 15, 3, 53, 0, 0) }
         specify { expect(time("at19.33 tomorrow")).to eq Time.new(2014, 11, 15, 19, 33, 0, 0) }
         specify { expect(time("1130 tomorrow")).to eq Time.new(2014, 11, 15, 11, 30, 0, 0) }
@@ -250,6 +253,7 @@ describe Halftime::Parser do
 
       describe "month and day" do
         specify { expect(time("tomorrow")).to eq Time.new(2015, 1, 1, 12, 0, 0, 0) }
+        specify { expect(time("Tomorrow")).to eq Time.new(2015, 1, 1, 12, 0, 0, 0) }
       end
     end
 

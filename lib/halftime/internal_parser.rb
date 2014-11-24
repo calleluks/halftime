@@ -22,7 +22,7 @@ module Halftime
     end
 
     rule :tomorrow do
-      str("tomorrow").as(:tomorrow)
+      stri("tomorrow").as(:tomorrow)
     end
 
     rule :numerical_date do
