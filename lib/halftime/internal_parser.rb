@@ -14,7 +14,8 @@ module Halftime
     end
 
     rule :date do
-      (tomorrow | numerical_date | date_with_month_name).as(:date_factory)
+      (tomorrow | weekday | numerical_date | date_with_month_name).
+        as(:date_factory)
     end
 
     rule :on? do
@@ -23,6 +24,43 @@ module Halftime
 
     rule :tomorrow do
       stri("tomorrow").as(:tomorrow)
+    end
+
+    rule :weekday do
+      next? >>
+        (monday | tuesday | wednesday | thursday | friday | saturday | sunday)
+    end
+
+    rule :next? do
+      stri("next").maybe >> spaces?
+    end
+
+    rule :monday do
+      (stri("monday") | stri("mon")).as(:monday)
+    end
+
+    rule :tuesday do
+      (stri("tuesday") | stri("tue")).as(:tuesday)
+    end
+
+    rule :wednesday do
+      (stri("wednesday") | stri("wed")).as(:wednesday)
+    end
+
+    rule :thursday do
+      (stri("thursday") | stri("thu")).as(:thursday)
+    end
+
+    rule :friday do
+      (stri("friday") | stri("fri")).as(:friday)
+    end
+
+    rule :saturday do
+      (stri("saturday") | stri("sat")).as(:saturday)
+    end
+
+    rule :sunday do
+      (stri("sunday") | stri("sun")).as(:sunday)
     end
 
     rule :numerical_date do

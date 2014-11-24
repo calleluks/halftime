@@ -42,6 +42,52 @@ module Halftime
       end
     end
 
+    class Weekday < Ambiguous
+      def self.monday
+        new(1)
+      end
+
+      def self.tuesday
+        new(2)
+      end
+
+      def self.wednesday
+        new(3)
+      end
+
+      def self.thursday
+        new(4)
+      end
+
+      def self.friday
+        new(5)
+      end
+
+      def self.saturday
+        new(6)
+      end
+
+      def self.sunday
+        new(7)
+      end
+
+      def new(current)
+        if current.wday < weekday_number
+          current + (weekday_number - current.wday)
+        else
+          current + (7 - current.wday + weekday_number)
+        end
+      end
+
+      private
+
+      def initialize(weekday_number)
+        @weekday_number = weekday_number
+      end
+
+      attr_reader :weekday_number
+    end
+
     class MonthDay < Ambiguous
       def initialize(month, day)
         @month = month

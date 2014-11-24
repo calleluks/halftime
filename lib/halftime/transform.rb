@@ -65,6 +65,34 @@ module Halftime
       DateFactories::Tomorrow.new
     end
 
+    rule monday: simple(:monday) do
+      DateFactories::Weekday.monday
+    end
+
+    rule tuesday: simple(:tuesday) do
+      DateFactories::Weekday.tuesday
+    end
+
+    rule wednesday: simple(:wednesday) do
+      DateFactories::Weekday.wednesday
+    end
+
+    rule thursday: simple(:thursday) do
+      DateFactories::Weekday.thursday
+    end
+
+    rule friday: simple(:friday) do
+      DateFactories::Weekday.friday
+    end
+
+    rule saturday: simple(:saturday) do
+      DateFactories::Weekday.saturday
+    end
+
+    rule sunday: simple(:sunday) do
+      DateFactories::Weekday.sunday
+    end
+
     rule month: simple(:month), day: simple(:day) do
       DateFactories::MonthDay.new(month, day)
     end

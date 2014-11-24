@@ -98,6 +98,36 @@ describe Halftime::Parser do
         specify { expect(time("feb09")).to eq Time.new(2015, 2, 9, 12, 0, 0, 0) }
         specify { expect(time("tomorrow")).to eq Time.new(2014, 11, 15, 12, 0, 0, 0) }
         specify { expect(time("Tomorrow")).to eq Time.new(2014, 11, 15, 12, 0, 0, 0) }
+        specify { expect(time("monday")).to eq Time.new(2014, 11, 17, 12, 0, 0, 0) }
+        specify { expect(time("Monday")).to eq Time.new(2014, 11, 17, 12, 0, 0, 0) }
+        specify { expect(time("mon")).to eq Time.new(2014, 11, 17, 12, 0, 0, 0) }
+        specify { expect(time("Mon")).to eq Time.new(2014, 11, 17, 12, 0, 0, 0) }
+        specify { expect(time("next monday")).to eq Time.new(2014, 11, 17, 12, 0, 0, 0) }
+        specify { expect(time("tuesday")).to eq Time.new(2014, 11, 18, 12, 0, 0, 0) }
+        specify { expect(time("Tuesday")).to eq Time.new(2014, 11, 18, 12, 0, 0, 0) }
+        specify { expect(time("tue")).to eq Time.new(2014, 11, 18, 12, 0, 0, 0) }
+        specify { expect(time("Next tue")).to eq Time.new(2014, 11, 18, 12, 0, 0, 0) }
+        specify { expect(time("Tue")).to eq Time.new(2014, 11, 18, 12, 0, 0, 0) }
+        specify { expect(time("wednesday")).to eq Time.new(2014, 11, 19, 12, 0, 0, 0) }
+        specify { expect(time("Wednesday")).to eq Time.new(2014, 11, 19, 12, 0, 0, 0) }
+        specify { expect(time("wed")).to eq Time.new(2014, 11, 19, 12, 0, 0, 0) }
+        specify { expect(time("Wed")).to eq Time.new(2014, 11, 19, 12, 0, 0, 0) }
+        specify { expect(time("thursday")).to eq Time.new(2014, 11, 20, 12, 0, 0, 0) }
+        specify { expect(time("Thursday")).to eq Time.new(2014, 11, 20, 12, 0, 0, 0) }
+        specify { expect(time("thu")).to eq Time.new(2014, 11, 20, 12, 0, 0, 0) }
+        specify { expect(time("Thu")).to eq Time.new(2014, 11, 20, 12, 0, 0, 0) }
+        specify { expect(time("friday")).to eq Time.new(2014, 11, 21, 12, 0, 0, 0) }
+        specify { expect(time("Friday")).to eq Time.new(2014, 11, 21, 12, 0, 0, 0) }
+        specify { expect(time("fri")).to eq Time.new(2014, 11, 21, 12, 0, 0, 0) }
+        specify { expect(time("Fri")).to eq Time.new(2014, 11, 21, 12, 0, 0, 0) }
+        specify { expect(time("saturday")).to eq Time.new(2014, 11, 15, 12, 0, 0, 0) }
+        specify { expect(time("Saturday")).to eq Time.new(2014, 11, 15, 12, 0, 0, 0) }
+        specify { expect(time("sat")).to eq Time.new(2014, 11, 15, 12, 0, 0, 0) }
+        specify { expect(time("Sat")).to eq Time.new(2014, 11, 15, 12, 0, 0, 0) }
+        specify { expect(time("sunday")).to eq Time.new(2014, 11, 16, 12, 0, 0, 0) }
+        specify { expect(time("Sunday")).to eq Time.new(2014, 11, 16, 12, 0, 0, 0) }
+        specify { expect(time("sun")).to eq Time.new(2014, 11, 16, 12, 0, 0, 0) }
+        specify { expect(time("Sun")).to eq Time.new(2014, 11, 16, 12, 0, 0, 0) }
       end
 
       describe "year, month and day" do
@@ -160,6 +190,9 @@ describe Halftime::Parser do
         specify { expect(time("4am tomorrow")).to eq Time.new(2014, 11, 15, 4, 0, 0, 0) }
         specify { expect(time("17 tomorrow")).to eq Time.new(2014, 11, 15, 17, 0, 0, 0) }
         specify { expect(time("@ 3 tomorrow")).to eq Time.new(2014, 11, 15, 3, 0, 0, 0) }
+        specify { expect(time("monday 3pm")).to eq Time.new(2014, 11, 17, 15, 0, 0, 0) }
+        specify { expect(time("15 next monday")).to eq Time.new(2014, 11, 17, 15, 0, 0, 0) }
+        specify { expect(time("1 on Tue")).to eq Time.new(2014, 11, 18, 1, 0, 0, 0) }
       end
 
       describe "month, day, hours and minutes" do
@@ -191,6 +224,8 @@ describe Halftime::Parser do
         specify { expect(time("@ 0353 tomorrow")).to eq Time.new(2014, 11, 15, 3, 53, 0, 0) }
         specify { expect(time("at19.33 tomorrow")).to eq Time.new(2014, 11, 15, 19, 33, 0, 0) }
         specify { expect(time("1130 tomorrow")).to eq Time.new(2014, 11, 15, 11, 30, 0, 0) }
+        specify { expect(time("@ 01.10 Wednesday")).to eq Time.new(2014, 11, 19, 1, 10, 0, 0) }
+        specify { expect(time("thu at 20:22")).to eq Time.new(2014, 11, 20, 20, 22, 0, 0) }
       end
 
       describe "year, month, day and hours" do
@@ -254,6 +289,34 @@ describe Halftime::Parser do
       describe "month and day" do
         specify { expect(time("tomorrow")).to eq Time.new(2015, 1, 1, 12, 0, 0, 0) }
         specify { expect(time("Tomorrow")).to eq Time.new(2015, 1, 1, 12, 0, 0, 0) }
+        specify { expect(time("monday")).to eq Time.new(2015, 1, 5, 12, 0, 0, 0) }
+        specify { expect(time("Monday")).to eq Time.new(2015, 1, 5, 12, 0, 0, 0) }
+        specify { expect(time("mon")).to eq Time.new(2015, 1, 5, 12, 0, 0, 0) }
+        specify { expect(time("Mon")).to eq Time.new(2015, 1, 5, 12, 0, 0, 0) }
+        specify { expect(time("tuesday")).to eq Time.new(2015, 1, 6, 12, 0, 0, 0) }
+        specify { expect(time("Tuesday")).to eq Time.new(2015, 1, 6, 12, 0, 0, 0) }
+        specify { expect(time("tue")).to eq Time.new(2015, 1, 6, 12, 0, 0, 0) }
+        specify { expect(time("Tue")).to eq Time.new(2015, 1, 6, 12, 0, 0, 0) }
+        specify { expect(time("wednesday")).to eq Time.new(2015, 1, 7, 12, 0, 0, 0) }
+        specify { expect(time("Wednesday")).to eq Time.new(2015, 1, 7, 12, 0, 0, 0) }
+        specify { expect(time("wed")).to eq Time.new(2015, 1, 7, 12, 0, 0, 0) }
+        specify { expect(time("Wed")).to eq Time.new(2015, 1, 7, 12, 0, 0, 0) }
+        specify { expect(time("thursday")).to eq Time.new(2015, 1, 1, 12, 0, 0, 0) }
+        specify { expect(time("Thursday")).to eq Time.new(2015, 1, 1, 12, 0, 0, 0) }
+        specify { expect(time("thu")).to eq Time.new(2015, 1, 1, 12, 0, 0, 0) }
+        specify { expect(time("Thu")).to eq Time.new(2015, 1, 1, 12, 0, 0, 0) }
+        specify { expect(time("friday")).to eq Time.new(2015, 1, 2, 12, 0, 0, 0) }
+        specify { expect(time("Friday")).to eq Time.new(2015, 1, 2, 12, 0, 0, 0) }
+        specify { expect(time("fri")).to eq Time.new(2015, 1, 2, 12, 0, 0, 0) }
+        specify { expect(time("Fri")).to eq Time.new(2015, 1, 2, 12, 0, 0, 0) }
+        specify { expect(time("saturday")).to eq Time.new(2015, 1, 3, 12, 0, 0, 0) }
+        specify { expect(time("Saturday")).to eq Time.new(2015, 1, 3, 12, 0, 0, 0) }
+        specify { expect(time("sat")).to eq Time.new(2015, 1, 3, 12, 0, 0, 0) }
+        specify { expect(time("Sat")).to eq Time.new(2015, 1, 3, 12, 0, 0, 0) }
+        specify { expect(time("sunday")).to eq Time.new(2015, 1, 4, 12, 0, 0, 0) }
+        specify { expect(time("Sunday")).to eq Time.new(2015, 1, 4, 12, 0, 0, 0) }
+        specify { expect(time("sun")).to eq Time.new(2015, 1, 4, 12, 0, 0, 0) }
+        specify { expect(time("Sun")).to eq Time.new(2015, 1, 4, 12, 0, 0, 0) }
       end
     end
 
