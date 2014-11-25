@@ -2,6 +2,7 @@ Halftime
 ========
 
 [![Build Status](https://travis-ci.org/calleerlandsson/halftime.svg)](https://travis-ci.org/calleerlandsson/halftime)
+[![Code Climate](https://codeclimate.com/github/calleerlandsson/halftime/badges/gpa.svg)](https://codeclimate.com/github/calleerlandsson/halftime)
 
 A natural language time parser.
 
