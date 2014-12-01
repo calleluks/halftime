@@ -2,10 +2,66 @@ require "parslet"
 
 module Halftime
   class InternalParser < Parslet::Parser
-    root :time_components
+    root :time_factory
 
-    rule :time_components do
-      (date_and_or_time_of_day >> time_zone?).as(:time_components)
+    rule :time_factory do
+      relative | absolute
+    end
+
+    rule :relative do
+      in? >> distance.as(:relative) >> from_now?
+    end
+
+    rule :in? do
+      str("in").maybe >> spaces?
+    end
+
+    rule :from_now? do
+      spaces? >> (str("from") >> spaces? >> str("now")).maybe >> spaces?
+    end
+
+    rule :distance do
+      (duration >> spaces? >> unit).as(:distance)
+    end
+
+    rule :duration do
+      digit.repeat(1).as(:integer).as(:duration)
+    end
+
+    rule :unit do
+      (years | months | weeks | days | hours | minutes | seconds).as(:unit)
+    end
+
+    rule :years do
+      plural_stri("year").as(:years)
+    end
+
+    rule :months do
+      plural_stri("month").as(:months)
+    end
+
+    rule :weeks do
+      plural_stri("week").as(:weeks)
+    end
+
+    rule :days do
+      plural_stri("day").as(:days)
+    end
+
+    rule :hours do
+      plural_stri("hour").as(:hours)
+    end
+
+    rule :minutes do
+      plural_stri("minute").as(:minutes)
+    end
+
+    rule :seconds do
+      plural_stri("second").as(:seconds)
+    end
+
+    rule :absolute do
+      (date_and_or_time_of_day >> time_zone?).as(:absolute)
     end
 
     rule :date_and_or_time_of_day do
@@ -219,6 +275,14 @@ module Halftime
       str("pm").as(:pm)
     end
 
+    rule :spaces? do
+      spaces.maybe
+    end
+
+    rule :spaces do
+      str(" ").repeat(1)
+    end
+
     rule :time_zone? do
       (utc).as(:time_zone).maybe
     end
@@ -227,12 +291,8 @@ module Halftime
       str("Z").as(:utc)
     end
 
-    rule :spaces? do
-      spaces.maybe
-    end
-
-    rule :spaces do
-      str(" ").repeat(1)
+    def plural_stri(string)
+      stri(string) >> stri("s").maybe
     end
 
     def stri(string)

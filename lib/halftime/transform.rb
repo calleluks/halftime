@@ -1,9 +1,10 @@
 require "active_support"
 require "active_support/core_ext"
-require "halftime/meridies"
-require "halftime/time_factory"
-require "halftime/time_of_day"
 require "halftime/date_factories"
+require "halftime/distances"
+require "halftime/meridies"
+require "halftime/time_factories"
+require "halftime/time_of_day"
 require "halftime/time_zones"
 require "parslet"
 
@@ -117,8 +118,44 @@ module Halftime
       TimeZones::UTC
     end
 
-    rule time_components: subtree(:time_components) do
-      TimeFactory.new(time_components)
+    rule absolute: subtree(:absolute) do
+      TimeFactories::Absolute.new(absolute)
+    end
+
+    rule years: simple(:years) do
+      Distances::Years
+    end
+
+    rule months: simple(:months) do
+      Distances::Months
+    end
+
+    rule weeks: simple(:weeks) do
+      Distances::Weeks
+    end
+
+    rule days: simple(:days) do
+      Distances::Days
+    end
+
+    rule hours: simple(:hours) do
+      Distances::Hours
+    end
+
+    rule minutes: simple(:minutes) do
+      Distances::Minutes
+    end
+
+    rule seconds: simple(:seconds) do
+      Distances::Seconds
+    end
+
+    rule duration: simple(:duration), unit: simple(:unit) do
+      unit.new(duration)
+    end
+
+    rule relative: subtree(:relative) do
+      TimeFactories::Relative.new(relative)
     end
   end
 end

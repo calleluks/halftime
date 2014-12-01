@@ -279,6 +279,42 @@ describe Halftime::Parser do
         specify { expect(time("2014-11-20T18:46:41Z")).to eq Time.new(2014, 11, 20, 18, 46, 41, 0) }
         specify { expect(time("2014-11-14T07:00:00Z")).to eq Time.new(2014, 11, 14, 7, 0, 0, 0) }
       end
+
+      describe "distances" do
+        specify { expect(time("1 year")).to eq Time.new(2015, 11, 14, 8, 0, 0, 0) }
+        specify { expect(time("2 years")).to eq Time.new(2016, 11, 14, 8, 0, 0, 0) }
+        specify { expect(time("2 years from now")).to eq Time.new(2016, 11, 14, 8, 0, 0, 0) }
+        specify { expect(time("in 2 years")).to eq Time.new(2016, 11, 14, 8, 0, 0, 0) }
+        specify { expect(time("1 month")).to eq Time.new(2014, 12, 14, 8, 0, 0, 0) }
+        specify { expect(time("2 months")).to eq Time.new(2015, 1, 14, 8, 0, 0, 0) }
+        specify { expect(time("2 months from now")).to eq Time.new(2015, 1, 14, 8, 0, 0, 0) }
+        specify { expect(time("in 2 months")).to eq Time.new(2015, 1, 14, 8, 0, 0, 0) }
+        specify { expect(time("1 week")).to eq Time.new(2014, 11, 21, 8, 0, 0, 0) }
+        specify { expect(time("2 weeks")).to eq Time.new(2014, 11, 28, 8, 0, 0, 0) }
+        specify { expect(time("2 weeks from now")).to eq Time.new(2014, 11, 28, 8, 0, 0, 0) }
+        specify { expect(time("3 weeks")).to eq Time.new(2014, 12, 5, 8, 0, 0, 0) }
+        specify { expect(time("in 3 weeks")).to eq Time.new(2014, 12, 5, 8, 0, 0, 0) }
+        specify { expect(time("1 day")).to eq Time.new(2014, 11, 15, 8, 0, 0, 0) }
+        specify { expect(time("2 days")).to eq Time.new(2014, 11, 16, 8, 0, 0, 0) }
+        specify { expect(time("2 days from now")).to eq Time.new(2014, 11, 16, 8, 0, 0, 0) }
+        specify { expect(time("48 days")).to eq Time.new(2015, 1, 1, 8, 0, 0, 0) }
+        specify { expect(time("in 48 days")).to eq Time.new(2015, 1, 1, 8, 0, 0, 0) }
+        specify { expect(time("1 hour")).to eq Time.new(2014, 11, 14, 9, 0, 0, 0) }
+        specify { expect(time("2 hours")).to eq Time.new(2014, 11, 14, 10, 0, 0, 0) }
+        specify { expect(time("2 hours from now")).to eq Time.new(2014, 11, 14, 10, 0, 0, 0) }
+        specify { expect(time("16 hours")).to eq Time.new(2014, 11, 15, 0, 0, 0, 0) }
+        specify { expect(time("in 16 hours")).to eq Time.new(2014, 11, 15, 0, 0, 0, 0) }
+        specify { expect(time("1 minute")).to eq Time.new(2014, 11, 14, 8, 1, 0, 0) }
+        specify { expect(time("2 minutes")).to eq Time.new(2014, 11, 14, 8, 2, 0, 0) }
+        specify { expect(time("2 minutes from now")).to eq Time.new(2014, 11, 14, 8, 2, 0, 0) }
+        specify { expect(time("61 minutes")).to eq Time.new(2014, 11, 14, 9, 1, 0, 0) }
+        specify { expect(time("in 61 minutes")).to eq Time.new(2014, 11, 14, 9, 1, 0, 0) }
+        specify { expect(time("1 second")).to eq Time.new(2014, 11, 14, 8, 0, 1, 0) }
+        specify { expect(time("2 seconds")).to eq Time.new(2014, 11, 14, 8, 0, 2, 0) }
+        specify { expect(time("2 seconds from now")).to eq Time.new(2014, 11, 14, 8, 0, 2, 0) }
+        specify { expect(time("61 seconds")).to eq Time.new(2014, 11, 14, 8, 1, 1, 0) }
+        specify { expect(time("in 61 seconds")).to eq Time.new(2014, 11, 14, 8, 1, 1, 0) }
+      end
     end
 
     context "at 2014-12-31 13:00:00" do
@@ -317,6 +353,16 @@ describe Halftime::Parser do
         specify { expect(time("Sunday")).to eq Time.new(2015, 1, 4, 12, 0, 0, 0) }
         specify { expect(time("sun")).to eq Time.new(2015, 1, 4, 12, 0, 0, 0) }
         specify { expect(time("Sun")).to eq Time.new(2015, 1, 4, 12, 0, 0, 0) }
+      end
+
+      describe "distances" do
+        specify { expect(time("1 year")).to eq Time.new(2015, 12, 31, 13, 0, 0, 0) }
+        specify { expect(time("1 month")).to eq Time.new(2015, 1, 31, 13, 0, 0, 0) }
+        specify { expect(time("1 week")).to eq Time.new(2015, 1, 7, 13, 0, 0, 0) }
+        specify { expect(time("1 day")).to eq Time.new(2015, 1, 1, 13, 0, 0, 0) }
+        specify { expect(time("1 hour")).to eq Time.new(2014, 12, 31, 14, 0, 0, 0) }
+        specify { expect(time("1 minute")).to eq Time.new(2014, 12, 31, 13, 1, 0, 0) }
+        specify { expect(time("1 second")).to eq Time.new(2014, 12, 31, 13, 0, 1, 0) }
       end
     end
 
