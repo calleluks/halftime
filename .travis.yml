@@ -1,9 +1,6 @@
 before_install:
   - "echo '--colour' > ~/.rspec"
   - "echo 'gem: --no-document' > ~/.gemrc"
-branches:
-  only:
-    - master
 cache:
   - bundler
 language:
@@ -12,4 +9,4 @@ notifications:
   email:
     - false
 rvm:
-  - 2.1.4
+  - 2.4.2
